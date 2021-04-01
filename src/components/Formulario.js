@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-const Formulario = () => {
+const Formulario = ({ busqueda, guardarBusqueda, guardarConsultar }) => {
   //state
-  const [busqueda, guardarBusqueda] = useState({
-    ciudad: "",
-    pais: "",
-  });
   const [error, guardarError] = useState(false);
 
   const { ciudad, pais } = busqueda;
@@ -27,7 +23,7 @@ const Formulario = () => {
       return;
     }
     guardarError(false);
-
+    guardarConsultar(true);
     //pasar al componente principal
   };
 
@@ -62,12 +58,12 @@ const Formulario = () => {
         <label htmlFor="pais">Pais: </label>
       </div>
       <div className="input-field col s12">
-        <input
+        <button
           type="submit"
-          value="Buscar Clima"
-          className="waves-effect waves-light btn-large btn-block yellow accent-4"
-          onClick={handleSubmit}
-        />
+          className="waves-effect waves-light btn-large btn-block yellow accent-4 col s12"
+        >
+          Buscar Clima
+        </button>
       </div>
     </form>
   );
